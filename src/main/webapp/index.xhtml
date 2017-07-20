@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h2>Registro Persona</h2>
+        <hr/>
+        <h:form>
+            <h:messages globalOnly="true" errorStyle="color:red;" infoStyle="color:blue;"/>
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Nombre" for="nombre"/>
+                <h:inputText value="#{personaController.persona.nombre}" id="nombre"/>
+                <h:message for="nombre"/>
+                <h:outputLabel value="Apellido" for="apellido"/>
+                <h:inputText value="#{personaController.persona.apellido}" id="apellido"/>
+                <h:message for="apellido"/>
+                <h:outputLabel value="Fecha Nac." for="fechanac"/>
+                <h:inputText value="#{personaController.persona.fechaNacimiento}" id="fechanac">
+                    <f:convertDateTime pattern="YYYY-MM-dd"/>
+                </h:inputText>
+                <h:message for="fechanac"/>
+                <h:column/>
+                <h:commandButton value="Registrar" action="#{personaController.registrarPersona}"/>
+            </h:panelGrid>
+        </h:form>
+
+        <h2>Registro Profesor</h2>
+        <hr/>
+        <h:form>
+            <h:messages globalOnly="true" errorStyle="color:red;" infoStyle="color:blue;"/>
+            <h:panelGrid columns="3">
+                <f:validateBean validationGroups="com.mycompany.beanvalidationweb.utiles.GrupoBasico">
+                    <h:outputLabel value="Nombre" for="nombrep"/>
+                    <h:inputText value="#{personaController.profesor.nombre}" id="nombrep"/>
+                    <h:message for="nombrep"/>
+                    <h:outputLabel value="Apellido" for="apellidop"/>
+                    <h:inputText value="#{personaController.profesor.apellido}" id="apellidop"/>
+                    <h:message for="apellidop"/>
+                    <h:outputLabel value="Fecha Nac." for="fechanacp"/>
+                    <h:inputText value="#{personaController.profesor.fechaNacimiento}" id="fechanacp">
+                        <f:convertDateTime pattern="YYYY-MM-dd"/>
+                    </h:inputText>
+                    <h:message for="fechanacp"/>
+
+                    <h:outputLabel value="Grado" for="grado"/>
+                    <h:inputText value="#{personaController.profesor.grado}" id="gradop"/>
+                    <h:message for="gradop"/>
+                    <h:outputLabel value="Certificado" for="certificadop"/>
+                    <h:selectBooleanCheckbox id="certificadop" value="#{personaController.profesor.certificado}"/>
+                    <h:message for="certificadop"/>
+
+                    <h:column/>
+                    <h:commandButton value="Registrar" action="#{personaController.registrarProfesor}"/>
+                </f:validateBean>     
+
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
